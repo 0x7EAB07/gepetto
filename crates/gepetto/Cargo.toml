@@ -1,0 +1,6 @@
+[package]
+name = "gepetto-core"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

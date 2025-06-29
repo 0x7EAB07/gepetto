@@ -1,0 +1,45 @@
+[package]
+name = "gepetto"
+version.workspace = true
+edition.workspace = true
+
+[workspace]
+resolver = "2"
+members = ["crates/*"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "gepetto"
+path = "src/main.rs"
+
+[dependencies]
+# Error handling
+anyhow = "1.0"
+# CLI Framework
+clap = { version = "4.4", features = ["derive"] }
+# Terminal UI
+console = "0.16"
+dialoguer = "0.11"
+# Utilities
+dirs = "6.0"
+# Local crate
+gepetto-core = { path = "crates/gepetto" }
+indicatif = "0.17"
+owo-colors = "4.0"
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+shellexpand = "3.1"
+# Templating
+tera = "1.19"
+thiserror = "2.0"
+# Async runtime
+tokio = { version = "1.0", features = ["full"] }
+toml = "0.8"
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+
