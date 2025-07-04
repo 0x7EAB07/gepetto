@@ -51,13 +51,6 @@ impl ProjectConfig {
     ///
     /// # Returns
     /// A tuple containing (underscore_name, readable_name)
-    ///
-    /// # Examples
-    /// ```
-    /// let (underscore, readable) = ProjectConfig::generate_program_name_variants("some-counter");
-    /// // underscore: "some_counter"
-    /// // readable: "Some Counter"
-    /// ```
     fn generate_program_name_variants(program_name_dash: &str) -> (String, String) {
         let program_name_underscore = program_name_dash.replace("-", "_");
 
