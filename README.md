@@ -4,7 +4,7 @@ Solana's `pinnochio` project scaffold creator.
 
 ## Features
 
-- TODO
+- `new` This command helps scaffold a Solana pinocchio project featuring mollusk tests and benches.
 
 ## Installation
 
