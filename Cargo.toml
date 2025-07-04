@@ -5,7 +5,7 @@ edition.workspace = true
 
 [workspace]
 resolver = "2"
-members = ["crates/*"]
+members = []
 
 [workspace.package]
 version = "0.1.0"
@@ -27,8 +27,6 @@ console = "0.16"
 dialoguer = "0.11"
 # Utilities
 dirs = "6.0"
-# Local crate
-gepetto-core = { path = "crates/gepetto" }
 indicatif = "0.17"
 owo-colors = "4.0"
 # Serialization

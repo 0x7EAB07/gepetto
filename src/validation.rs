@@ -45,10 +45,10 @@ pub fn should_template_file(file_path: &Path) -> bool {
         Some("rs") | Some("toml") | Some("md") | Some("json") | Some("txt") => true,
         None => {
             // Files without extension like LICENSE
-            match file_path.file_name().and_then(|f| f.to_str()) {
-                Some("LICENSE") | Some("README") => true,
-                _ => false,
-            }
+            matches!(
+                file_path.file_name().and_then(|f| f.to_str()),
+                Some("LICENSE") | Some("README")
+            )
         }
         _ => false,
     }

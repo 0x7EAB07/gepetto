@@ -36,7 +36,7 @@ pub async fn scaffold_project(package_name: Option<String>) -> Result<()> {
     // Validate project and template directories
     validate_project_directory(&config.program_name_dash)?;
     let template_dir = Path::new("template");
-    validate_template_directory(&template_dir)?;
+    validate_template_directory(template_dir)?;
 
     // Create project directory
     let project_dir = Path::new(&config.program_name_dash);
@@ -48,15 +48,15 @@ pub async fn scaffold_project(package_name: Option<String>) -> Result<()> {
 
     // Copy template files with processing
     copy_template_files(
-        &template_dir,
-        &project_dir,
+        template_dir,
+        project_dir,
         &mut tera,
         &context,
         &config.program_name_dash,
     )?;
 
     // Create program-id.json
-    create_program_id_file(&project_dir, &config.program_keypair)?;
+    create_program_id_file(project_dir, &config.program_keypair)?;
 
     // Print success message
     print_success_message(&config.program_pubkey);
