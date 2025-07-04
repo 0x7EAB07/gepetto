@@ -1,0 +1,13 @@
+[workspace]
+resolver = "2"
+members = ["programs/*"]
+
+[workspace.dependencies]
+mollusk-svm = "0.3.0"
+mollusk-svm-bencher = "0.3.0"
+pinocchio = "0.8.4"
+pinocchio-pubkey = "0.2.4"
+pinocchio-system = "0.2.3"
+solana-client = "2.2.1"
+solana-program-runtime = "=2.3.1"
+solana-sdk = "2.2.1"

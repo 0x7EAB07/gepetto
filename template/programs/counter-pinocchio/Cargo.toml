@@ -1,0 +1,31 @@
+[package]
+name = "{{program_name_underscore}}"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[[test]]
+name = "mollusk_tests"
+
+[[bench]]
+harness = false
+name = "compute_units"
+
+[dependencies]
+pinocchio = { workspace = true }
+pinocchio-pubkey = { workspace = true }
+pinocchio-system = { workspace = true }
+
+[dev-dependencies]
+mollusk-svm = { workspace = true }
+mollusk-svm-bencher = { workspace = true }
+solana-program-runtime = { workspace = true }
+solana-sdk = { workspace = true }
+
+[features]
+bench-default = ["no-entrypoint", "std"]
+no-entrypoint = []
+std = []
+test-default = ["no-entrypoint", "std"]
