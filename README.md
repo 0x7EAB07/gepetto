@@ -43,22 +43,8 @@ cargo build --release
 
 ```bash
 # Run the CLI
-cargo run
+gepetto new
 
 # Show help
-cargo run -- --help
-```
-
-## Development
-
-### Running Tests
-
-```bash
-cargo test
-```
-
-### Testing the Library
-
-```bash
-cargo test -p gepetto-core
+gepetto --help
 ```
