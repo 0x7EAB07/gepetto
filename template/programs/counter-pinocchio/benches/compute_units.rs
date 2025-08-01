@@ -20,7 +20,7 @@ pub const PROGRAM: Pubkey = Pubkey::new_from_array(ID);
 pub const AUTHORITY: Pubkey = pubkey!("Co11111111111111111111111111111111111111111");
 
 pub fn mollusk() -> Mollusk {
-    let mollusk = Mollusk::new(&PROGRAM, "../../target/deploy/counter_pinocchio");
+    let mollusk = Mollusk::new(&PROGRAM, "../../target/deploy/{{program_name_underscore}}");
     mollusk
 }
 
