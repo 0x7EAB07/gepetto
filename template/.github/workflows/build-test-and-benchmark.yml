@@ -1,0 +1,57 @@
+name: Build, test, and benchmark
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build-test-and-bench:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Cache cargo registry
+        uses: actions/cache@v3
+        with:
+          path: ~/.cargo/registry
+          key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: Cache cargo index
+        uses: actions/cache@v3
+        with:
+          path: ~/.cargo/git
+          key: ${{ runner.os }}-cargo-index-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: Cache cargo build
+        uses: actions/cache@v3
+        with:
+          path: target
+          key: ${{ runner.os }}-cargo-build-target-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: Cache Solana toolchain
+        uses: actions/cache@v3
+        with:
+          path: ~/.local/share/solana
+          key: ${{ runner.os }}-solana-toolchain
+
+      - name: Install Solana CLI
+        run: |
+          if [ ! -d "$HOME/.local/share/solana" ]; then
+            curl --proto '=https' --tlsv1.2 -sSfL https://solana-install.solana.workers.dev | bash
+          fi
+          echo "$HOME/.local/share/solana/install/active_release/bin" >> $GITHUB_PATH
+
+      - name: Build Solana program
+        run: cargo build-sbf
+
+      - name: Run tests
+        run: cargo test --features test-default
+
+      - name: Run benchmarks
+        run: cargo bench --features bench-default
